@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
   static const String _title = 'Flutter Drawer';
   @override
   Widget build(BuildContext context) {
@@ -25,11 +25,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final GlobalKey<ScaffoldState> _key = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _key,
       appBar: AppBar(
-        title: Text('Act 3 Drawer Aaron MotaR'),
+        title: Text('Act 3 Drawer Mota'),
       ),
       drawer: Drawer(
         child: ListView(
@@ -80,6 +82,20 @@ class _MyHomePageState extends State<MyHomePage> {
                 Navigator.pop(context);
               },
             ),
+            AboutListTile(
+              // <-- SEE HERE
+              icon: Icon(
+                Icons.info,
+              ),
+              child: Text('About app'),
+              applicationIcon: Icon(
+                Icons.local_play,
+              ),
+              applicationName: 'My Cool App',
+              applicationVersion: '1.0.25',
+              applicationLegalese: '© 2019 Company',
+              aboutBoxChildren: [],
+            ),
           ],
         ),
       ),
@@ -88,6 +104,15 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             SizedBox(
               height: 50,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                _key.currentState!.openDrawer(); //<-- SEE HERE
+              },
+              child: const Text(
+                'Elevated Button 1',
+                style: TextStyle(fontSize: 24),
+              ),
             ),
           ],
         ),

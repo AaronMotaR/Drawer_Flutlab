@@ -29,7 +29,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Act 3 Drawer Mota'),
+        title: Text('Act 3 Drawer Aaron Mota'),
       ),
       drawer: Drawer(
         child: ListView(
